@@ -10,7 +10,7 @@ let gameIsRunning = false;
 
 const startGameBtn = document.getElementById("start-game-btn");
 
-const getPlayerChoice = function () {
+const getPlayerChoice = () => {
   const selection = prompt(`${ROCK}, ${PAPER} or ${SCISSOR}`, "").toUpperCase();
   if (selection !== ROCK && selection !== PAPER && selection !== SCISSOR) {
     alert("Invalid choice. We chose Rock for you!");
@@ -19,7 +19,7 @@ const getPlayerChoice = function () {
   return selection;
 };
 
-const getComputerChoice = function () {
+const getComputerChoice = () => {
   const randomChoice = Math.random();
   if (randomChoice <= 0.33) {
     return ROCK;
@@ -30,7 +30,7 @@ const getComputerChoice = function () {
   }
 };
 
-const getWinner = function (cChoice, pChoice) {
+const getWinner = (cChoice, pChoice) => {
   if (cChoice === pChoice) {
     return RESEULT_DRAW;
   } else if (
@@ -44,7 +44,7 @@ const getWinner = function (cChoice, pChoice) {
   }
 };
 
-startGameBtn.addEventListener("click", function () {
+startGameBtn.addEventListener("click", () => {
   if (gameIsRunning) {
     return;
   }
