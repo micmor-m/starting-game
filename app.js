@@ -2,7 +2,7 @@ const ROCK = "ROCK";
 const PAPER = "PAPER";
 const SCISSOR = "SCISSOR";
 const DEFAULT_CHOICE = ROCK;
-const RESEULT_DRAW = "DRAW";
+const RESULT_DRAW = "DRAW";
 const RESULT_PLAYER_WIN = "PLAYER WINS";
 const RESULT_COMPUTER_WIN = "COMPUTER WINS";
 
@@ -32,7 +32,7 @@ const getComputerChoice = () => {
 
 const getWinner = (cChoice, pChoice) => {
   if (cChoice === pChoice) {
-    return RESEULT_DRAW;
+    return RESULT_DRAW;
   } else if (
     (cChoice === ROCK && pChoice === PAPER) ||
     (cChoice === PAPER && pChoice === SCISSOR) ||
@@ -53,5 +53,15 @@ startGameBtn.addEventListener("click", () => {
   const playerSelection = getPlayerChoice();
   const computerSelection = getComputerChoice();
   const winner = getWinner(computerSelection, playerSelection);
-  console.log(winner);
+  let message = `You picked ${playerSelection}, coputer picked ${computerSelection}, therefore you  `;
+
+  if (winner === RESULT_DRAW) {
+    message += "had a draw";
+  } else if (winner === RESULT_PLAYER_WIN) {
+    message += "won";
+  } else if (winner === RESULT_COMPUTER_WIN) {
+    message += "lost";
+  }
+  alert(message);
+  gameIsRunning = false;
 });
